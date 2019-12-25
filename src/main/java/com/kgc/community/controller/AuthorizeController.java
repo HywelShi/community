@@ -27,6 +27,7 @@ public class AuthorizeController {
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getGithubUser(accessToken);
+        System.out.println(githubUser.getName());
         return "index";
     }
 }

@@ -26,8 +26,12 @@ public class GithubProvider {
                 .build();
         try (Response response = client.newCall(request).execute()) {
             String string = response.body().string();
+            //access_token=cf6e978b09a9533a9c9430fe13e5df1270457d1e&scope=user&token_type=bearer
+            //先按照&截取再按照=截取 得到access_token
             System.out.println(string);
-            return string;
+            String access_token = string.split("&")[0].split("=")[1];
+            System.out.println(access_token);
+            return access_token;
         } catch (Exception e) {
            e.printStackTrace();
         }
