@@ -9,3 +9,5 @@ git add .
 git commit -m "提交说明" 
 ###远程提交
 git push
+
+##2.GitHub授权登陆时序图
