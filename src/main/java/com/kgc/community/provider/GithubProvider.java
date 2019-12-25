@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * @author hywel
  * 利用okhttp将github授权后的code发送回去
- * @Component利用IOC将其放入spring统一管理
+ * @Component利用IOC将其放入spring容器统一管理
  */
 @Component
 public class GithubProvider {
