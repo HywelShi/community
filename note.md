@@ -48,4 +48,7 @@ https://api.github.com/user
 获取GitHub用户对象
 三个重要属性
 name id bio
- 
+
+##集成flyway数据库版本控制
+更新数据库命令
+mvn flyway:migrate
