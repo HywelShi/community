@@ -30,8 +30,8 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <!-- 利用模版引擎中的if来判断是否有github账户登录 -->
-                <li class="dropdown" th:if="${session.githubUser != null}">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" th:text="${session.githubUser.getName()}">
+                <li class="dropdown" th:if="${session.user != null}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" th:text="${session.user.getName()}">
                         <span class="caret">我</span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
@@ -40,7 +40,7 @@
                     </ul>
                 </li>
                 <!--<li><a role="button">普通登陆</a></li>-->
-                <li th:if="${session.githubUser == null}"><a href="https://github.com/login/oauth/authorize?client_id=99da32dbb64c1bd85bdd&redirect_uri=http://localhost:8888/callback&scope=user&state=1">登录</a></li>
+                <li th:if="${session.user == null}"><a href="https://github.com/login/oauth/authorize?client_id=99da32dbb64c1bd85bdd&redirect_uri=http://localhost:8888/callback&scope=user&state=1">登录</a></li>
 
             </ul>
         </div>
