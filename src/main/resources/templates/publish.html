@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>主页-课工场</title>
+    <title>发布-课工场</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script type="application/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="application/javascript" src="js/bootstrap.min.js"></script>
@@ -43,6 +43,12 @@
                 <li th:if="${session.user == null}"><a href="https://github.com/login/oauth/authorize?client_id=99da32dbb64c1bd85bdd&redirect_uri=http://localhost:8888/callback&scope=user&state=1">登录</a></li>
 
             </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="background-color: red;height: 300px"></div>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="background-color: green;height: 300px;"></div>
         </div>
     </div>
 </nav>
