@@ -46,19 +46,23 @@ public class AuthorizeController {
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getGithubUser(accessToken);
-        System.out.println(githubUser.getName());
         if(githubUser != null && githubUser.getId() != null){
-            User user = new User();
-            String token = UUID.randomUUID().toString();
-            user.setToken(token);
-            user.setName(githubUser.getName());
-            user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(System.currentTimeMillis());
-            user.setAvatarUrl(githubUser.getAvatar_url());
-            userMapper.insert(user);
+            String token = null;
+            //判断用户是否已经授权登录过 如果没有则插入数据库 如果有则直接登录
+            User user = userMapper.selectByName(githubUser.getName());
+            if(user==null){
+                user = new User();
+                token= UUID.randomUUID().toString();
+                user.setToken(token);
+                user.setName(githubUser.getName());
+                user.setAccountId(String.valueOf(githubUser.getId()));
+                user.setGmtCreate(System.currentTimeMillis());
+                user.setGmtModified(System.currentTimeMillis());
+                user.setAvatarUrl(githubUser.getAvatar_url());
+                userMapper.insert(user);
+            }
             //登录成功 写入cookie和session
-            response.addCookie(new Cookie("token",token));
+            response.addCookie(new Cookie("token",user.getToken()));
             //request.getSession().setAttribute("githubUser",githubUser);
             //重定向返回主页面
             return "redirect:/";

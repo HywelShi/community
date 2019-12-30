@@ -22,4 +22,22 @@ public interface UserMapper {
      */
     @Select("select * from user where token = #{token}")
     public User selectByToken(@Param("token") String token);
+
+    /**
+     * 根据用户名查询GitHub用户
+     * 需要修改为根据account_id查询
+     * @param name
+     * @return
+     */
+    @Select("select * from user where name = #{name}")
+    public User selectByName(@Param("name") String name);
+
+    /**
+     * 查询用户id
+     * @param id
+     * @return
+     */
+    @Select("select * from user where id=#{id}")
+    public User findById(@Param("id") Integer id);
+
 }

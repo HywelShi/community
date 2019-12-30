@@ -1,7 +1,11 @@
 package com.kgc.community.controller;
 
+import com.kgc.community.dto.QuestionDTO;
+import com.kgc.community.mapper.QuestionMapper;
 import com.kgc.community.mapper.UserMapper;
+import com.kgc.community.model.Question;
 import com.kgc.community.model.User;
+import com.kgc.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +16,7 @@ import javax.jws.soap.SOAPMessageHandlers;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author hywel
@@ -21,12 +26,16 @@ public class IndexController {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private QuestionMapper questionMapper;
+    @Autowired
+    private QuestionService questionService;
     /**
      * 访问主页获取页面用户cookie中存入的token
      * @return
      */
     @GetMapping("/")
-    public String index(HttpServletRequest request){
+    public String index(HttpServletRequest request,Model model){
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {
@@ -40,6 +49,10 @@ public class IndexController {
                 }
             }
         }
+        //登录成功主页显示所有的问题
+        List<QuestionDTO> questionList = questionService.listAll();
+        model.addAttribute("questions",questionList);
+
         return "index";
     }
     @GetMapping("/logout")
