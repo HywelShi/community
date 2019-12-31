@@ -29,7 +29,7 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${session.user != null}">
+                <li>
                     <a href="/publish">发布</a>
                 </li>
                 <!-- 利用模版引擎中的if来判断是否有github账户登录 -->
@@ -51,8 +51,8 @@
 </nav>
 <div class="container-fluid main">
     <div class="row">
-        <div class="col-lg-9  col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发现</h2>
+        <div class="col-lg-9  col-md-12 col-sm-12 col-xs-12 left">
+            <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发现</h3>
             <hr>
             <div class="media" th:each="question:${questions}">
                 <div class="media-left">
@@ -67,14 +67,15 @@
                     <span class="text-desc">
                         <span th:text="${question.getCommentCount()}"></span> 个回复 •
                         <span th:text="${question.getViewCount()}"></span> 次浏览 •
-                        <span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"></span>
+                        <span th:text="${#dates.format(question.getGmtCreate(),'yyyy-MM-dd HH:mm:ss')}"></span>
                     </span>
                 </div>
                 <hr>
             </div>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 right">
             <h3>热门话题</h3>
+            <hr>
         </div>
     </div>
 </div>

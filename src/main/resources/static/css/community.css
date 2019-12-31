@@ -35,5 +35,8 @@ hr{
     line-height: 16px;
     display: inline-block;
     background-color: rgb(166, 191, 58);
-    border-radius: 10px;
+    border-radius: 3px;
+}
+.left{
+    border-right: 1px solid #cecece ;
 }
