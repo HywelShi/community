@@ -62,7 +62,10 @@ public class AuthorizeController {
                 userMapper.insert(user);
             }
             //登录成功 写入cookie和session
-            response.addCookie(new Cookie("token",user.getToken()));
+            Cookie cookie = new Cookie("token", user.getToken());
+            //设置cookie过期时间 单位秒 600秒后自动清除
+            cookie.setMaxAge(600);
+            response.addCookie(cookie);
             //request.getSession().setAttribute("githubUser",githubUser);
             //重定向返回主页面
             return "redirect:/";

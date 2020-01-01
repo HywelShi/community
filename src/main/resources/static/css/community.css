@@ -1,7 +1,5 @@
 .main{
-    margin-top: 40px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin: 40px 60px 60px 60px;
     background-color: white;
 }
 body{
@@ -39,4 +37,7 @@ hr{
 }
 .left{
     border-right: 1px solid #cecece ;
+}
+.page{
+    text-align: center;
 }

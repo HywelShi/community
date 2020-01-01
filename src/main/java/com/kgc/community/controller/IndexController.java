@@ -1,5 +1,6 @@
 package com.kgc.community.controller;
 
+import com.kgc.community.dto.PaginationDTO;
 import com.kgc.community.dto.QuestionDTO;
 import com.kgc.community.mapper.QuestionMapper;
 import com.kgc.community.mapper.UserMapper;
@@ -30,12 +31,16 @@ public class IndexController {
     private QuestionMapper questionMapper;
     @Autowired
     private QuestionService questionService;
+
     /**
      * 访问主页获取页面用户cookie中存入的token
+     *
      * @return
      */
     @GetMapping("/")
-    public String index(HttpServletRequest request,Model model){
+    public String index(HttpServletRequest request, Model model,
+                        @RequestParam(value = "page",defaultValue = "1") Integer page,
+                        @RequestParam(value = "size",defaultValue = "5") Integer size) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {
@@ -50,15 +55,15 @@ public class IndexController {
             }
         }
         //登录成功主页显示所有的问题
-        List<QuestionDTO> questionList = questionService.listAll();
-        model.addAttribute("questions",questionList);
-
+        PaginationDTO pagination = questionService.list(page,size);
+        model.addAttribute("pagination", pagination);
         return "index";
     }
+
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response){
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().removeAttribute("user");
-        Cookie cookie = new Cookie("token",null);
+        Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         return "redirect:/";
