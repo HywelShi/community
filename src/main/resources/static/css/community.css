@@ -1,5 +1,5 @@
 .main{
-    margin: 40px 60px 60px 60px;
+    margin: 40px 60px 40px 60px;
     background-color: white;
 }
 body{
@@ -9,10 +9,16 @@ body{
     float: right;
     margin-bottom: 20px;
 }
-/*问题图片大小*/
+/*问题头像图片大小*/
 .media-object{
     width: 60px;
     height: 60px;
+}
+/*用户头像大小*/
+.userHead{
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
 }
 /*分割线颜色*/
 hr{
@@ -40,4 +46,24 @@ hr{
 }
 .page{
     text-align: center;
+}
+.footer{
+    font-weight: normal;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 个人页卡 */
+.list-group-item.active{
+    background-image: -webkit-linear-gradient(top,rgb(166, 191, 58) 0%, rgb(166, 191, 58) 100%);
+    border-color: rgb(166, 191, 58);
+}
+.list-group-item.active:hover{
+    background-image: -webkit-linear-gradient(top,rgb(166, 170, 58) 0%, rgb(166, 170, 58) 100%);
+    border-color: rgb(166, 191, 58);
+}
+.list-group{
+    margin-top: 25px;
 }
