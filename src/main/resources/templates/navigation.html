@@ -7,10 +7,10 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">课工场社区</span>
+                        <span class="sr-only">码农社区</span>
 
                     </button>
-                    <a class="navbar-brand" href="/">课工场社区</a>
+                    <a class="navbar-brand" href="/">码农社区</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,7 +42,7 @@
                         </li>
                         <!--<li><a role="button">普通登陆</a></li>-->
                         <li th:if="${session.user == null}"><a
-                                href="https://github.com/login/oauth/authorize?client_id=99da32dbb64c1bd85bdd&redirect_uri=http://localhost:8888/callback&scope=user&state=1">登录</a>
+                                href="/login">登录</a>
                         </li>
 
                     </ul>

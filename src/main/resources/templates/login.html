@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="application/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/community.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="modal-dialog" style="margin-top: 10%;">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title text-center" id="myModalLabel">用户登录</h4>
+                </div>
+                <div class="modal-body" id="model-body">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" placeholder="账号" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+
+                        <input type="password" class="form-control" placeholder="密码" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary form-control btn_login">登录</button>
+                    </div>
+                    <div class="form-group">
+                        <a href="/register"><button type="button" class="btn btn-default form-control">注册</button></a>
+                    </div>
+                    <div class="form-group">
+                        <a href="https://github.com/login/oauth/authorize?client_id=99da32dbb64c1bd85bdd&redirect_uri=http://localhost:8888/callback&scope=user&state=1">
+                        <button type="button" class="btn btn-default form-control">GitHub登录</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
